@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trang Chủ - Café Anime</title>
+<style>
+/* ===== Reset ===== */
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  background: linear-gradient(to bottom, #fff1e6, #ffe4f0);
+  color:#3a241c;
+  line-height:1.6;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* ===== Particles ===== */
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: rgba(255,255,255,0.8);
+  border-radius: 50%;
+  animation: particleMove linear infinite;
+}
+@keyframes particleMove {
+  0% { transform: translateY(0px) translateX(0px) scale(1); opacity:1; }
+  100% { transform: translateY(600px) translateX(50px) scale(0.5); opacity:0; }
+}
+
+/* ===== Background animation (lá rơi) ===== */
+.falling-leaf {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background-image: url('https://www.emojiall.com/images/240/emojidex/1f338.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  top: -50px;
+  animation-name: fall;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+@keyframes fall {
+  0% { transform: translateY(-50px) rotate(0deg); opacity:1; }
+  100% { transform: translateY(110vh) rotate(360deg); opacity:0; }
+}
+
+/* ===== Glow animation ===== */
+@keyframes glow { 0%,100% { text-shadow:0 0 5px #fff8c6,0 0 10px #ff9a9e; } 50% { text-shadow:0 0 20px #fff8c6,0 0 30px #ff9a9e; } }
+
+/* ===== Header & Nav ===== */
+header {
+  background: linear-gradient(90deg,#ff9a9e,#fad0c4);
+  color:#fff;
+  padding:20px 0;
+  text-align:center;
+  font-size:2.5rem;
+  font-weight:bold;
+  animation: glow 2s infinite;
+}
+nav {
+  display:flex;
+  justify-content:center;
+  background: linear-gradient(90deg,#a18cd1,#fbc2eb);
+  border-bottom: 3px solid #ff6a95;
+}
+nav a {
+  color:#fff;
+  text-decoration:none;
+  margin:0 15px;
+  padding:10px 20px;
+  font-weight:bold;
+  border-radius:10px;
+  transition:0.3s;
+  position: relative;
+}
+nav a::after {
+  content:'';
+  position:absolute; left:0; bottom:0;
+  width:100%; height:2px;
+  background:#fff;
+  transform:scaleX(0);
+  transition: transform 0.3s ease;
+  transform-origin:right;
+}
+nav a:hover::after {
+  transform:scaleX(1); transform-origin:left;
+}
+nav a:hover {
+  color:#fff;
+  text-shadow:0 0 10px #ff9a9e,0 0 20px #fad0c4;
+}
+
+/* ===== Banner ===== */
+.banner {
+  background: url('https://images4.alphacoders.com/137/1371397.jpeg') center/cover no-repeat;
+  height:400px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#fff;
+  text-shadow:2px 2px #3a241c;
+  font-size:3rem;
+  font-weight:bold;
+  border-radius: 15px;
+  margin: 20px;
+  animation: glow 3s infinite, bannerMove 15s infinite linear;
+  position: relative;
+  overflow: hidden;
+  background-position-x: 0;
+}
+@keyframes bannerMove { 0% { background-position-x:0; } 50% { background-position-x:-200px; } 100% { background-position-x:0; } }
+/* Bubble effect on banner hover */
+.banner:hover::after {
+  content:'';
+  position:absolute;
+  width:200px;
+  height:200px;
+  border-radius:50%;
+  background: rgba(255,255,255,0.3);
+  top:-50px;
+  left:-50px;
+  animation:bubble 2s infinite;
+}
+@keyframes bubble { 0% { transform:translate(0,0) scale(0.2); opacity:1; } 100% { transform:translate(300px,400px) scale(1); opacity:0; } }
+
+/* ===== Container ===== */
+.container { width:90%; max-width:1200px; margin:30px auto; }
+h2 {
+  background: linear-gradient(90deg,#ff9a9e,#fad0c4);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  font-size:2rem;
+  margin-bottom:20px;
+  text-align:center;
+  animation: glow 2.5s infinite;
+}
+
+/* ===== Tables ===== */
+table {
+  width:100%;
+  border-collapse: separate;
+  border-spacing:0;
+  margin-bottom:30px;
+  border-radius:15px;
+  overflow:hidden;
+  box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+table th, table td { padding:12px 15px; text-align:left; transition:0.3s; }
+table th { background: linear-gradient(to right,#a18cd1,#fbc2eb); color:#fff; }
+table tr:nth-child(even) { background: linear-gradient(to right,#ffe2e2,#fff0f5); }
+table tr:nth-child(odd) { background: linear-gradient(to right,#fef3ec,#ffe4f0); }
+table td { border-bottom:1px solid #ffd6e8; }
+table tr:hover td { background: rgba(255,255,255,0.4); box-shadow:0 0 10px #ff9a9e; }
+
+/* ===== Footer ===== */
+footer {
+  text-align:center;
+  padding:20px 0;
+  background: linear-gradient(90deg,#fbc2eb,#a6c1ee);
+  color:#fff;
+  font-weight:bold;
+  text-shadow:1px 1px #3a241c;
+  border-top:3px solid #ff6a95;
+}
+
+/* ===== Parallax scroll effect ===== */
+.parallax { transform: translateY(0px); transition: transform 0.2s; }
+</style>
+</head>
+<body>
+
+<header class="parallax">Café Anime</header>
+
+<nav class="parallax">
+  <a href="main.html">Trang Chủ</a>
+  <a href="about.html">Giới Thiệu</a>
+  <a href="contact.html">Liên Hệ</a>
+</nav>
+
+<div class="banner parallax">Thưởng Thức Cà Phê Anime</div>
+
+<div class="container parallax">
+  <h2>Menu Đồ Uống</h2>
+  <table>
+    <tr>
+      <th>Tên</th><th>Giá</th><th>Mô Tả</th>
+    </tr>
+    <tr><td>Cà Phê Mocha</td><td>50.000₫</td><td>Hương vị socola đậm đà kết hợp espresso.</td></tr>
+    <tr><td>Latte Hồng Trà</td><td>45.000₫</td><td>Latte pha cùng hồng trà nhẹ nhàng.</td></tr>
+    <tr><td>Matcha Latte</td><td>55.000₫</td><td>Bột matcha nguyên chất từ Nhật Bản.</td></tr>
+  </table>
+</div>
+
+<footer class="parallax">&copy; 2025 Café Anime</footer>
+
+<!-- ===== Music background ===== -->
+<audio autoplay loop>
+  <source src="https://www.bensound.com/bensound-music/bensound-sunny.mp3" type="audio/mpeg">
+  Trình duyệt không hỗ trợ audio.
+</audio>
+
+<script>
+// ===== tạo lá rơi =====
+const body = document.body;
+const leafCount = 20;
+for(let i=0;i<leafCount;i++){
+  const leaf=document.createElement('div');
+  leaf.className='falling-leaf';
+  leaf.style.left=Math.random()*window.innerWidth+'px';
+  leaf.style.animationDuration=(5+Math.random()*5)+'s';
+  leaf.style.opacity=Math.random();
+  leaf.style.transform=`rotate(${Math.random()*360}deg)`;
+  body.appendChild(leaf);
+}
+
+// ===== tạo particle lấp lánh =====
+const particleCount = 50;
+for(let i=0;i<particleCount;i++){
+  const p = document.createElement('div');
+  p.className='particle';
+  p.style.left=Math.random()*window.innerWidth+'px';
+  p.style.top=Math.random()*window.innerHeight+'px';
+  p.style.animationDuration=(3+Math.random()*4)+'s';
+  body.appendChild(p);
+}
+
+// ===== Parallax scroll =====
+window.addEventListener('scroll',()=>{
+  const scroll = window.scrollY;
+  document.querySelectorAll('.parallax').forEach(el=>{
+    el.style.transform = `translateY(${scroll*0.3}px)`;
+  });
+});
+</script>
+
+</body>
+</html>

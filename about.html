@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Giới Thiệu - Café Anime</title>
+<style>
+/* ===== Reset ===== */
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  background: linear-gradient(to bottom, #fff1e6, #ffe4f0);
+  color:#3a241c;
+  line-height:1.6;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* ===== Particles ===== */
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: rgba(255,255,255,0.8);
+  border-radius: 50%;
+  animation: particleMove linear infinite;
+}
+@keyframes particleMove {
+  0% { transform: translateY(0px) translateX(0px) scale(1); opacity:1; }
+  100% { transform: translateY(600px) translateX(50px) scale(0.5); opacity:0; }
+}
+
+/* ===== Glow animation ===== */
+@keyframes glow { 0%,100% { text-shadow:0 0 5px #fff8c6,0 0 10px #ff9a9e; } 50% { text-shadow:0 0 20px #fff8c6,0 0 30px #ff9a9e; } }
+
+/* ===== Header & Nav ===== */
+header {
+  background: linear-gradient(90deg,#ff9a9e,#fad0c4);
+  color:#fff;
+  padding:20px 0;
+  text-align:center;
+  font-size:2.5rem;
+  font-weight:bold;
+  animation: glow 2s infinite;
+}
+nav {
+  display:flex;
+  justify-content:center;
+  background: linear-gradient(90deg,#a18cd1,#fbc2eb);
+  border-bottom: 3px solid #ff6a95;
+}
+nav a {
+  color:#fff;
+  text-decoration:none;
+  margin:0 15px;
+  padding:10px 20px;
+  font-weight:bold;
+  border-radius:10px;
+  transition:0.3s;
+  position: relative;
+}
+nav a::after {
+  content:'';
+  position:absolute; left:0; bottom:0;
+  width:100%; height:2px;
+  background:#fff;
+  transform:scaleX(0);
+  transition: transform 0.3s ease;
+  transform-origin:right;
+}
+nav a:hover::after {
+  transform:scaleX(1); transform-origin:left;
+}
+nav a:hover {
+  color:#fff;
+  text-shadow:0 0 10px #ff9a9e,0 0 20px #fad0c4;
+}
+
+/* ===== Container ===== */
+.container { width:90%; max-width:1200px; margin:30px auto; background: rgba(255,255,255,0.7); border-radius: 15px; padding: 20px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); }
+h2,h3 {
+  background: linear-gradient(90deg,#ff9a9e,#fad0c4);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  font-size:2rem;
+  margin-bottom:15px;
+  text-align:center;
+  animation: glow 2.5s infinite;
+}
+p { margin-bottom:20px; font-size:1.1rem; }
+
+/* ===== Tables ===== */
+table {
+  width:100%;
+  border-collapse: separate;
+  border-spacing:0;
+  margin-bottom:30px;
+  border-radius:15px;
+  overflow:hidden;
+  box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+table th, table td { padding:12px 15px; text-align:left; transition:0.3s; vertical-align:middle; }
+table th { background: linear-gradient(to right,#a18cd1,#fbc2eb); color:#fff; }
+table tr:nth-child(even) { background: linear-gradient(to right,#ffe2e2,#fff0f5); }
+table tr:nth-child(odd) { background: linear-gradient(to right,#fef3ec,#ffe4f0); }
+table td { border-bottom:1px solid #ffd6e8; }
+table tr:hover td { background: rgba(255, 255, 255, 0.4); box-shadow:0 0 10px #ff9a9e; }
+table img { width:100px; border-radius:8px; transition:0.3s; }
+table img:hover { transform: scale(1.05); box-shadow:0 0 10px #ff9a9e; }
+
+/* ===== Video ===== */
+.video-container { text-align:center; margin:20px 0; }
+.video-container video { max-width:100%; border:3px solid #3a241c; border-radius:10px; }
+
+/* ===== Footer ===== */
+footer {
+  text-align:center;
+  padding:20px 0;
+  background: linear-gradient(90deg,#fbc2eb,#a6c1ee);
+  color:#fff;
+  font-weight:bold;
+  text-shadow:1px 1px #3a241c;
+  border-top:3px solid #ff6a95;
+}
+
+/* ===== Parallax scroll effect ===== */
+.parallax { transform: translateY(0px); transition: transform 0.2s; }
+
+/* ===== Sakura rơi ===== */
+.falling-leaf {
+  position: absolute;
+  font-size: 30px;
+  top: -50px;
+  animation-name: fall;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+@keyframes fall {
+  0% { transform: translateY(-50px) rotate(0deg); opacity:1; }
+  100% { transform: translateY(110vh) rotate(360deg); opacity:0; }
+}
+</style>
+</head>
+<body>
+
+<header class="parallax">Café Anime</header>
+
+<nav class="parallax">
+  <a href="main.html">Trang Chủ</a>
+  <a href="about.html">Giới Thiệu</a>
+  <a href="contact.html">Liên Hệ</a>
+</nav>
+
+<div class="container parallax">
+  <h2>Về Chúng Tôi</h2>
+  <p>Café Anime ra đời năm 2020, với mục tiêu mang đến trải nghiệm thưởng thức cà phê kết hợp không gian anime độc đáo. Quán có không gian ấm cúng, trang trí theo phong cách anime Nhật Bản, rất thích hợp để thư giãn, chụp ảnh và gặp gỡ bạn bè.</p>
+
+  <h3>Lịch sử thành lập</h3>
+  <table>
+    <tr>
+      <th>Năm</th>
+      <th>Sự kiện</th>
+    </tr>
+    <tr>
+      <td>2020</td>
+      <td>Quán khai trương với 50 chỗ ngồi và không gian anime đầu tiên.</td>
+    </tr>
+    <tr>
+      <td>2022</td>
+      <td>Mở rộng không gian và thêm khu vực chơi boardgame.</td>
+    </tr>
+  </table>
+
+  <h3>Không gian phục vụ</h3>
+  <table>
+    <tr>
+      <th>Khu vực</th>
+      <th>Mô tả</th>
+      <th>Hình ảnh</th>
+    </tr>
+    <tr>
+      <td>Khu cà phê chính</td>
+      <td>Không gian ấm cúng với bàn ghế gỗ, trang trí anime Nhật Bản.</td>
+      <td><img src="https://img.freepik.com/premium-photo/lofi-style-anime-backgrounds_380557-2865.jpg" alt="Khu cà phê"></td>
+    </tr>
+    <tr>
+      <td>Khu đọc sách & boardgame</td>
+      <td>Khu vực yên tĩnh, thích hợp đọc sách và chơi boardgame.</td>
+      <td><img src="https://cdn.xanhsm.com/2025/02/33832335-cafe-sach-tphcm-9.jpg" alt="Khu đọc sách"></td>
+    </tr>
+    <tr>
+      <td>Khu ngoài trời</td>
+      <td>Không gian ngoài trời thoáng mát, decor hoa và đèn led phong cách anime.</td>
+      <td><img src="https://phongcachmoc.vn/upload/images/CAFE%20s%C3%A2n%20v%C6%B0%E1%BB%9Dn%20Nh%E1%BA%ADt-9.jpg" alt="Khu ngoài trời"></td>
+    </tr>
+  </table>
+
+  <h3>Các loại cà phê nổi bật</h3>
+  <table>
+    <tr>
+      <th>Tên</th>
+      <th>Giá</th>
+      <th>Mô tả</th>
+      <th>Hình ảnh</th>
+    </tr>
+    <tr>
+      <td>Cà Phê Mocha</td>
+      <td>50.000₫</td>
+      <td>Hương vị socola đậm đà kết hợp espresso.</td>
+      <td><img src="https://vinbarista.com/uploads/news/ca-phe-mocha-la-gi-cach-lam-ca-phe-mocha-nong-va-da-xay-202408191541.jpg" alt="Mocha"></td>
+    </tr>
+    <tr>
+      <td>Latte Hồng Trà</td>
+      <td>45.000₫</td>
+      <td>Latte pha cùng hồng trà nhẹ nhàng.</td>
+      <td><img src="https://newtea.vn/storage/2025/07/1114/hong-tra-latte.jpg" alt="Latte Hồng Trà"></td>
+    </tr>
+    <tr>
+      <td>Matcha Latte</td>
+      <td>55.000₫</td>
+      <td>Bột matcha nguyên chất từ Nhật Bản.</td>
+      <td><img src="https://lypham.vn/wp-content/uploads/2024/10/cach-pha-matcha-latte-nong.jpg" alt="Matcha Latte"></td>
+    </tr>
+  </table>
+
+  <div class="video-container">
+    <h3>Video Giới Thiệu</h3>
+    <video controls autoplay muted loop>
+      <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+      Trình duyệt của bạn không hỗ trợ video.
+    </video>
+  </div>
+</div>
+
+<footer class="parallax">&copy; 2025 Café Anime</footer>
+
+<script>
+// ===== tạo hoa sakura rơi =====
+const body = document.body;
+const leafCount = 20;
+for(let i=0;i<leafCount;i++){
+  const leaf = document.createElement('div');
+  leaf.className='falling-leaf';
+  leaf.style.left=Math.random()*window.innerWidth+'px';
+  leaf.style.animationDuration=(5+Math.random()*5)+'s';
+  leaf.style.opacity=Math.random();
+  leaf.style.transform=`rotate(${Math.random()*360}deg)`;
+  leaf.innerHTML = '🌸';
+  body.appendChild(leaf);
+}
+
+// ===== Parallax scroll =====
+window.addEventListener('scroll',()=>{
+  const scroll = window.scrollY;
+  document.querySelectorAll('.parallax').forEach(el=>{
+    el.style.transform = `translateY(${scroll*0.3}px)`;
+  });
+});
+
+// ===== Tạo particle lấp lánh =====
+const particleCount = 50;
+for(let i=0;i<particleCount;i++){
+  const p = document.createElement('div');
+  p.className='particle';
+  p.style.left=Math.random()*window.innerWidth+'px';
+  p.style.top=Math.random()*window.innerHeight+'px';
+  p.style.animationDuration=(3+Math.random()*4)+'s';
+  body.appendChild(p);
+});
+</script>
+
+</body>
+</html>
