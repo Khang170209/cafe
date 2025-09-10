@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Đăng Nhập VIP Pro - Café Anime</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  overflow:hidden;
+  position:relative;
+  background: url('https://images2.alphacoders.com/137/1373188.png') center/cover no-repeat;
+}
+
+/* ===== Container ===== */
+.login-container, .register-container {
+  background: rgba(255,255,255,0.85);
+  padding:40px;
+  border-radius:20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  width: 350px;
+  text-align:center;
+  position: relative;
+  overflow:hidden;
+  transition:0.5s;
+}
+.register-container { display:none; }
+
+/* ===== Glow Header ===== */
+.login-container h1, .register-container h1 {
+  font-size:2rem;
+  background: linear-gradient(90deg,#ff9a9e,#fad0c4,#fbc2eb);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  margin-bottom:30px;
+  animation: glow 2s infinite;
+}
+@keyframes glow { 0%,100% { text-shadow:0 0 5px #fff,0 0 10px #ff9a9e; } 50% { text-shadow:0 0 20px #fff,0 0 30px #fad0c4; } }
+
+/* ===== Form ===== */
+form {
+  display:flex;
+  flex-direction:column;
+}
+input[type="text"], input[type="password"], input[type="email"] {
+  padding:12px;
+  margin-bottom:15px;
+  border-radius:10px;
+  border:2px solid #3a241c;
+  outline:none;
+  font-size:1rem;
+  transition:0.3s;
+}
+input:focus {
+  border-color:#ff9a9e;
+  box-shadow:0 0 10px #ff9a9e;
+}
+
+/* ===== Options & Buttons ===== */
+.options {
+  display:flex;
+  align-items:center;
+  justify-content:flex-start;
+  margin-bottom:20px;
+}
+.options label { font-size:0.9rem; color:#3a241c; margin-left:5px; }
+button {
+  padding:12px;
+  border:none;
+  border-radius:10px;
+  background: linear-gradient(90deg,#ff9a9e,#fad0c4,#fbc2eb);
+  color:#fff;
+  font-weight:bold;
+  cursor:pointer;
+  font-size:1rem;
+  transition:0.3s;
+}
+button:hover {
+  box-shadow:0 0 15px #ff9a9e;
+  transform:scale(1.05);
+}
+
+/* ===== Footer ===== */
+.login-footer, .register-footer {
+  margin-top:20px;
+  font-size:0.85rem;
+  color:#3a241c;
+}
+.login-footer a, .register-footer a { color:#ff9a9e; cursor:pointer; }
+
+/* ===== Sakura Animation ===== */
+.falling-leaf {
+  position: absolute;
+  font-size: 25px;
+  top: -50px;
+  animation-name: fall;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+@keyframes fall {
+  0% { transform: translateY(-50px) rotate(0deg); opacity:1; }
+  100% { transform: translateY(110vh) rotate(360deg); opacity:0; }
+}
+
+/* ===== Responsive ===== */
+@media(max-width:400px){
+  .login-container, .register-container{ width:90%; padding:25px; }
+}
+</style>
+</head>
+<body>
+
+<div class="login-container" id="loginBox">
+  <h1>Đăng Nhập VIP</h1>
+  <form id="loginForm">
+    <input type="text" name="username" placeholder="Tên đăng nhập" required>
+    <input type="password" name="password" placeholder="Mật khẩu" required>
+    <div class="options">
+      <input type="checkbox" name="remember"> <label>Ghi nhớ tôi</label>
+    </div>
+    <button type="submit">Đăng Nhập</button>
+  </form>
+  <div class="login-footer">
+    Chưa có tài khoản? <a onclick="showRegister()">Đăng ký ngay</a>
+  </div>
+</div>
+
+<div class="register-container" id="registerBox">
+  <h1>Đăng Ký VIP</h1>
+  <form id="registerForm">
+    <input type="text" name="fullname" placeholder="Họ và tên" required>
+    <input type="email" name="email" placeholder="Email" required>
+    <input type="text" name="username" placeholder="Tên đăng nhập" required>
+    <input type="password" name="password" placeholder="Mật khẩu" required>
+    <input type="password" name="confirm" placeholder="Xác nhận mật khẩu" required>
+    <div class="options">
+      <input type="checkbox" name="agree" required> <label>Tôi đồng ý điều khoản</label>
+    </div>
+    <button type="submit">Đăng Ký</button>
+  </form>
+  <div class="register-footer">
+    Đã có tài khoản? <a onclick="showLogin()">Đăng nhập</a>
+  </div>
+</div>
+
+<script>
+// ===== Sakura rơi =====
+const body = document.body;
+const leafCount = 15;
+for(let i=0;i<leafCount;i++){
+  const leaf = document.createElement('div');
+  leaf.className='falling-leaf';
+  leaf.style.left=Math.random()*window.innerWidth+'px';
+  leaf.style.animationDuration=(5+Math.random()*5)+'s';
+  leaf.style.opacity=Math.random();
+  leaf.style.transform=`rotate(${Math.random()*360}deg)`;
+  leaf.innerHTML = '🌸';
+  body.appendChild(leaf);
+}
+
+// ===== Login & Register Toggle =====
+function showRegister(){
+  document.getElementById('loginBox').style.display='none';
+  document.getElementById('registerBox').style.display='block';
+}
+function showLogin(){
+  document.getElementById('loginBox').style.display='block';
+  document.getElementById('registerBox').style.display='none';
+}
+
+// ===== Login & Register Form Submission =====
+document.getElementById('loginForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  window.location.href='main.html';
+});
+document.getElementById('registerForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  const password = this.password.value;
+  const confirm = this.confirm.value;
+  if(password !== confirm){
+    alert('Mật khẩu xác nhận không đúng!');
+    return;
+  }
+  alert('Đăng ký thành công! Vui lòng đăng nhập.');
+  showLogin();
+});
+</script>
+
+</body>
+</html>
